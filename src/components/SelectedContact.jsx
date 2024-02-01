@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import ContactList from "./ContactList";
-import ContactRow from "./ContactRow";
 
+const dummyContact = [
+    {id: 1, name: "Suffy", username: "Jellyroll", website: "gaston.us"}
+]
 
 function SelectedContact({ selectedContactId, setSelectedContactId }) {
 
     const SINGLE_URL = `https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users/${selectedContactId}`
 
-    const [contact, setContact] = useState(null);
+    const [contact, setContact] = useState(dummyContact);
 
     useEffect(() => {
         async function fetchContact() {
@@ -29,8 +31,25 @@ function SelectedContact({ selectedContactId, setSelectedContactId }) {
     <ContactList selectedContactId={selectedContactId} setSelectedContactId={setSelectedContactId}/>
 
     return (
-    <div className={selectedContactId}>
-         <h1>{contact.name}</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th colSpan="10">{contact.name}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{contact.username}</td>
+                </tr>
+                <tr>
+                    <td>{contact.email}</td>
+                </tr>
+                <tr>
+                    <td>{contact.website}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     );
 }
