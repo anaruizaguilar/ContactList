@@ -7,13 +7,13 @@ import './App.css'
 
 function App() {
 
-const [selectedContactId, setSelectedContactId]=useState(null);
+const [selectedContactId, setSelectedContactId] = useState(null);
 
   return (
     <>
       {selectedContactId ? (
-      < SelectedContact selectedContactId={setSelectedContactId}/>)
-      : ( <ContactList />)
+      < SelectedContact selectedContactId={selectedContactId} setSelectedContactId={setSelectedContactId}/>)
+      : ( <ContactList setSelectedContactId={setSelectedContactId}/>)
 }
     </>
   );

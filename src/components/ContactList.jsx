@@ -18,7 +18,7 @@ function ContactList({ setSelectedContactId }) {
         try {
             const response = await fetch(API_URL);
             const data = await response.json();
-            //console.log(data);
+            console.log(data);
             setContacts(data);
         } catch (error) {
             console.error(error);
@@ -44,7 +44,7 @@ function ContactList({ setSelectedContactId }) {
                 </tr>
                 {
                     contacts.map((contact) => {
-                        return <ContactRow key={contact.id} contact={contact} />;
+                        return <ContactRow key={contact.id} setSelectedContactId={setSelectedContactId} contact={contact} />;
                     })
                 }
             </tbody>

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import ContactList from "./ContactList";
+import ContactRow from "./ContactRow";
 
-const SINGLE_URL = `https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users/${selectedContactId}`
 
 function SelectedContact({ selectedContactId, setSelectedContactId }) {
+
+    const SINGLE_URL = `https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users/${selectedContactId}`
 
     const [contact, setContact] = useState(null);
 
@@ -11,9 +14,9 @@ function SelectedContact({ selectedContactId, setSelectedContactId }) {
         async function fetchContact() {
             try {
                 const response = await fetch(SINGLE_URL);
-                const details = await response.json();
-                //console.log(details);
-                setContact(details);
+                const data = await response.json();
+                //console.log(data);
+                setContact(data);
             } catch (error) {
                 console.error(error);
             }
@@ -23,8 +26,12 @@ function SelectedContact({ selectedContactId, setSelectedContactId }) {
 
     console.log("Contact: ", contact);
 
+    <ContactList selectedContactId={selectedContactId} setSelectedContactId={setSelectedContactId}/>
+
     return (
-    <div>Selected Contact View</div>
+    <div className={selectedContactId}>
+         <h1>{contact.name}</h1>
+    </div>
     );
 }
 
