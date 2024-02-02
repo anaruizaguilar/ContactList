@@ -50,6 +50,7 @@ function SelectedContact({ selectedContactId, setSelectedContactId }) {
                 </tr>
             </tbody>
         </table>
+        <button onClick={() => {setSelectedContactId(null)}}>Backsies</button>
     </div>
     );
 }
