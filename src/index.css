@@ -23,6 +23,8 @@ a:hover {
 }
 
 body {
+  background-color: maroon;
+  color:aliceblue;
   margin: 0;
   display: flex;
   place-items: center;
